@@ -16,8 +16,12 @@ function editor_updater_update \
         l "Using VSCode editor."
 
         set --global --export EDITOR "code --wait"
+    else if string match -q "$TERM_PROGRAM" zed; and which zed >/dev/null
+        l "Using Zed editor."
+
+        set --global --export EDITOR "zed --wait"
     else
-        l "Not using VSCode editor."
+        l "Not using a supported integrated editor terminal."
     end
 
 end
